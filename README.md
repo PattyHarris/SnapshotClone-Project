@@ -66,8 +66,13 @@
     pod 'Firebase/Auth' has to be added to the podfile.  Finish by clicking Install in the CocoaPods
     app.
     
-    3. Back in XCode, add the import for FirebaseAuth
+    3. In the Console for the SnapChatClone app, select the Authentication menu on the left
+    panel, click on the Sign-In Methdo tab, and enable Email/Password.  From here you
+    could also enable login using Facebook, Twitter, etc. 
     
-    4. 
+    4. Back in XCode, add the import for FirebaseAuth
+    
+    5. Once the user is created, you can see the created user data from the console under
+    Authentication/Users.
     
     
