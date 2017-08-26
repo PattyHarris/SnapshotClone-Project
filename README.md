@@ -56,6 +56,18 @@
 ## Back to SnapChatClone
 
     1. First view contains 2 text fields for an email and password as well as 2 buttons for login or
-    sign-up
+    sign-up.  The buttons and labels switch text depending on whether you logging in or signing up.
+    It's not the best UI, but I'll go with it.  I added static text to a struct that I used to switch
+    everything.
     
-    2. 
+    2. To authenticate the user (e.g. the top bottom is "sign up"), you need to install the
+    Firebase Authentication pod - see https://firebase.google.com/docs/auth/ios/start
+    This is under the Console, Documentation, Authentication (left menu panel), iOS -> Get Started.
+    pod 'Firebase/Auth' has to be added to the podfile.  Finish by clicking Install in the CocoaPods
+    app.
+    
+    3. Back in XCode, add the import for FirebaseAuth
+    
+    4. 
+    
+    

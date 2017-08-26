@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AuthViewController: UIViewController {
 
@@ -21,7 +22,7 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var bottomLabel: UILabel!
   
     // Indicates whether we're logging in or signing up.
-    var loginMode : Bool = false
+    var loginMode : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +33,59 @@ class AuthViewController: UIViewController {
     func setLabelsAndText() {
         if loginMode == true {
             topLabel.text = Storyboard.loginLabel
-            topButton.titleLabel?.text = Storyboard.loginButton
+            topButton.setTitle(Storyboard.loginButton, for: .normal)
             
             bottomLabel.text = Storyboard.signUpLabel
-            bottomButton.titleLabel?.text = Storyboard.signUpButton
+            bottomButton.setTitle(Storyboard.signUpButton, for: .normal)
         }
         else {
             topLabel.text = Storyboard.signUpLabel
-            topButton.titleLabel?.text = Storyboard.signUpButton
+            topButton.setTitle(Storyboard.signUpButton, for: .normal)
             
             bottomLabel.text = Storyboard.loginLabel
-            bottomButton.titleLabel?.text = Storyboard.loginButton
+            bottomButton.setTitle(Storyboard.loginButton, for: .normal)
         }
     }
 
+    // Top button is either "login" or "sign up"
     @IBAction func topButtonDidTap(_ sender: Any) {
+        
+        // Unwrap the optionals as usual..
+        if let email = emailTextField.text {
+            
+            if let password = passwordTextField.text {
+                
+                if loginMode == true {
+                    // Login the user
+                }
+                else {
+                    // Sign up the user
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {
+                        // Where user is FIRUser? and error is Error?
+                        (user, error) in
+                        
+                        // Code called once the createUser function completes.
+                        // Check first for an error
+                        if let error = error {
+                            print("An error occurred creating the user: \(error.localizedDescription)")
+                        }
+                        else {
+                            // We were successful.
+                            print("Success!")
+                        }
+                    })
+                }
+
+            }
+        }
     }
     
+    // Logic really doesn't make sense, but I'll go with it...
+    // The Sign-up button, when the bottom button is supposed to
+    // switch the text to allow the user to sign up using the text boxes.
     @IBAction func bottomButtonDidTap(_ sender: Any) {
+        loginMode = !loginMode
+        setLabelsAndText()
     }
     
     // Nested class Storyboard - used to set the text of the buttons and

@@ -9,5 +9,8 @@ target 'SnapChatClone' do
 
   # Pods for SnapChatClone
   pod 'Firebase/Core'
+  
+  # Pod for authentication
+  pod 'Firebase/Auth'
 
 end
