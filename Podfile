@@ -12,5 +12,11 @@ target 'SnapChatClone' do
   
   # Pod for authentication
   pod 'Firebase/Auth'
+  
+  # Pod for online storage
+  pod 'Firebase/Storage'
+  
+  #Pod for online database
+  pod 'Firebase/Database'
 
 end

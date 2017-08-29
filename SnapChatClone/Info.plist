@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Can we use your camera to take the snap?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Can we use your photo library to pick a snap?</string>
 </dict>
 </plist>

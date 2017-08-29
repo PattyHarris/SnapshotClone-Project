@@ -13,6 +13,9 @@
 		189522A01F4F695600950681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1895229F1F4F695600950681 /* Assets.xcassets */; };
 		189522A31F4F695600950681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189522A11F4F695600950681 /* LaunchScreen.storyboard */; };
 		189522AC1F4F6EBD00950681 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189522AB1F4F6E2300950681 /* GoogleService-Info.plist */; };
+		18E3EEF31F534D58008B7242 /* SnapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3EEF21F534D58008B7242 /* SnapsTableViewController.swift */; };
+		18E3EEF61F54759A008B7242 /* AddSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3EEF51F54759A008B7242 /* AddSnapViewController.swift */; };
+		18E3EEF81F54A2C4008B7242 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3EEF71F54A2C4008B7242 /* ContactsTableViewController.swift */; };
 		5DCCA24E6383E89F21A31311 /* Pods_SnapChatClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2507E3D95D4885D8906FED99 /* Pods_SnapChatClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +29,9 @@
 		189522A41F4F695600950681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189522AA1F4F69A900950681 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		189522AB1F4F6E2300950681 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18E3EEF21F534D58008B7242 /* SnapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsTableViewController.swift; sourceTree = "<group>"; };
+		18E3EEF51F54759A008B7242 /* AddSnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnapViewController.swift; sourceTree = "<group>"; };
+		18E3EEF71F54A2C4008B7242 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		2507E3D95D4885D8906FED99 /* Pods_SnapChatClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapChatClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47690C900538CA612A8BBCB6 /* Pods-SnapChatClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapChatClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapChatClone/Pods-SnapChatClone.debug.xcconfig"; sourceTree = "<group>"; };
 		EA730F075DC6660C5D06FB07 /* Pods-SnapChatClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapChatClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapChatClone/Pods-SnapChatClone.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				189522981F4F695600950681 /* AppDelegate.swift */,
-				1895229A1F4F695600950681 /* AuthViewController.swift */,
+				18E3EEF41F534D6A008B7242 /* View */,
 				1895229C1F4F695600950681 /* Main.storyboard */,
 				1895229F1F4F695600950681 /* Assets.xcassets */,
 				189522A11F4F695600950681 /* LaunchScreen.storyboard */,
@@ -74,6 +80,17 @@
 				189522A41F4F695600950681 /* Info.plist */,
 			);
 			path = SnapChatClone;
+			sourceTree = "<group>";
+		};
+		18E3EEF41F534D6A008B7242 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1895229A1F4F695600950681 /* AuthViewController.swift */,
+				18E3EEF21F534D58008B7242 /* SnapsTableViewController.swift */,
+				18E3EEF51F54759A008B7242 /* AddSnapViewController.swift */,
+				18E3EEF71F54A2C4008B7242 /* ContactsTableViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		442B6976428535F0E667F13E /* Frameworks */ = {
@@ -216,6 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E3EEF61F54759A008B7242 /* AddSnapViewController.swift in Sources */,
+				18E3EEF31F534D58008B7242 /* SnapsTableViewController.swift in Sources */,
+				18E3EEF81F54A2C4008B7242 /* ContactsTableViewController.swift in Sources */,
 				1895229B1F4F695600950681 /* AuthViewController.swift in Sources */,
 				189522991F4F695600950681 /* AppDelegate.swift in Sources */,
 			);
