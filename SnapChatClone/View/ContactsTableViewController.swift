@@ -96,9 +96,6 @@ class ContactsTableViewController: UITableViewController {
             navigationController?.popToRootViewController(animated: true)
 
         }
-        
-        
-        
     }
 
 

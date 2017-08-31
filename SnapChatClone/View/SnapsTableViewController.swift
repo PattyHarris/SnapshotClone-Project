@@ -8,12 +8,52 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SnapsTableViewController: UITableViewController {
 
+    var snaps : [FIRDataSnapshot] = [] {
+        
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // For the logged in user, show the snaps for that user.
+        if let currentUserUID = FIRAuth.auth()?.currentUser?.uid {
+            FIRDatabase.database().reference().child("users").child(currentUserUID).child("snaps").observe(.childAdded, with: { (snapshot) in
+                
+                // If you use the FIRDataSnapshot, you'd only need to do
+                self.snaps.append(snapshot)
+                
+                // Update the tableView - not needed here with the array didSet
+                // above
+                // self.tableView.reloadData()
+            })
+            
+            // We also want to know when a snap has been removed.
+            FIRDatabase.database().reference().child("users").child(currentUserUID).child("snaps").observe(FIRDataEventType.childRemoved, with: { (snapshot) in
+                
+                // Find the snap that matches and remove it
+                var index = 0;
+                for snap in self.snaps {
+                    if snap.key == snapshot.key {
+                        
+                        self.snaps.remove(at: index)
+                    }
+                    
+                    index += 1
+                }
+                
+                // Update the tableView - not needed here with the array didSet
+                // above
+                // self.tableView.reloadData()
+            })
+        }
+        
     }
 
     // MARK: - Button handlers
@@ -45,25 +85,43 @@ class SnapsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return 0
+         return snaps.count
     }
 
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SnapCell", for: indexPath)
 
         // Configure the cell...
+        let snapshot = snaps[indexPath.row]
 
+        if let snapDictionary = snapshot.value as? NSDictionary {
+            
+            if let email = snapDictionary["from"] as? String {
+                cell.textLabel?.text = email
+            }
+        }
+        
         return cell
     }
+    
+    // Show the Snap View Controller
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "snapsToSnapViewSegue", sender: snaps[indexPath.row])
+    }
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Give the snapshot data to the view snap VC.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if let snapViewController = segue.destination as? SnapViewController {
+            
+            if let snapshot = sender as? FIRDataSnapshot {
+                snapViewController.selectedSnap = snapshot
+            }
+        }
     }
-    */
 
 }

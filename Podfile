@@ -4,6 +4,7 @@ project 'SnapChatClone.xcodeproj'
 # platform :ios, '9.0'
 
 target 'SnapChatClone' do
+  
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -16,7 +17,10 @@ target 'SnapChatClone' do
   # Pod for online storage
   pod 'Firebase/Storage'
   
-  #Pod for online database
+  # Pod for online database
   pod 'Firebase/Database'
+  
+  # Pod for downloading images from the web
+  pod 'SDWebImage', '~> 4.1'
 
 end

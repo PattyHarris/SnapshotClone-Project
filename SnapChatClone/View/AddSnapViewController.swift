@@ -14,7 +14,11 @@ class AddSnapViewController: UIViewController,
 
     @IBOutlet weak var snapImageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
-     
+ 
+    // I added to play around with preventing double-clicks on buttons
+    // when the action takes some time.
+    @IBOutlet weak var nextButton: UIButton!
+    
     var imagePicker : UIImagePickerController = UIImagePickerController()
 
     // Use a UUID for the image name...
@@ -25,6 +29,13 @@ class AddSnapViewController: UIViewController,
         super.viewDidLoad()
 
         imagePicker.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Make sure the next button is enabled.
+        nextButton.isEnabled = true
     }
 
     // This is called after the picker closes with the data picked.
@@ -84,10 +95,15 @@ class AddSnapViewController: UIViewController,
                 // contains the download URL for the image - which will be passed along to the
                 // contacts TVC.
                 
+                // Disable the "Next" button to prevent double-clicking - in reality, you'd
+                // want to do the same with the text field and the select image buttons.
+                self.nextButton.isEnabled = false
+                
                 imageFolder.child(imageName).put(imageData, metadata: nil, completion: { (metadata, error) in
 
-                    if let error = error {
+                      if let error = error {
                         print("Upload has failed: \(error.localizedDescription)")
+                        self.nextButton.isEnabled = true
                     }
                     else {
                         // Seque to TBD

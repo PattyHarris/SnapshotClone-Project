@@ -157,7 +157,23 @@
     was a [String] - to capture both the emails and the user's UUID, a User class was used instead (see the
     bottom of the Add TVC).  This could easily have been a struct inside of the Add TVC class.
     
-    17.
+    17. In the Snap TVC, the list of snaps for the logged in user is shown.  Instead of using another custom
+    class to hold the snapshot data for each entry, the FIRDataSnapshot object type is used.
+    
+    18. The Snap VC is another "Show" segue from the Snaps TVC.  It shows the data for an individual snapshot.
+    
+    19. To download the image from the web (e.g. Firebase), we downloaded SDWebImage from CocoaPod.org.
+    Note to self - there's a little clipboard next to the name of the pod that holds the line you
+    need to add to the podfile - e.g. pod 'SDWebImage', '~> 4.1'
+    
+    With this pod, there are a number of methods available - they all begin with sd_
+    e.g. imageView.sd_setImage(with: url)
+    
+    My repo was out of date (odd), so I first needed to run pod repo update from the terminal - then the install
+    went through fine.
+    
+    
+    
     
     
     
